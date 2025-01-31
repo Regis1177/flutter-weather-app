@@ -36,6 +36,13 @@ class WeatherService {
           'temp': forecast['main']['temp'],
           'description': forecast['weather'][0]['description'],
           'icon': forecast['weather'][0]['icon'],
+          'wind_speed': forecast['wind']['speed'],
+          'wind_deg': forecast['wind']['deg'],
+          'humidity': forecast['main']['humidity'],
+          'clouds': forecast['clouds']['all'],
+          'rain': forecast['rain'] != null ? forecast['rain']['3h'] ?? 0 : 0,
+          'snow': forecast['snow'] != null ? forecast['snow']['3h'] ?? 0 : 0,
+          'pop': forecast['pop'] != null ? forecast['pop'] * 100 : 0,
         };
       }).toList();
     } else {

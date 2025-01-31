@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     'Wroclaw',
     'Poznan'
   ];
-  final Map<String, String?> _weatherData = {};
+  final Map<String, Map<String, dynamic>?> _weatherData = {};
 
   @override
   void initState() {
@@ -34,13 +34,20 @@ class _HomeScreenState extends State<HomeScreen> {
         final data = await _weatherService.fetchWeather(city);
         if (!mounted) return;
         setState(() {
-          _weatherData[city] =
-              "${data['main']['temp']}°C, ${data['weather'][0]['description']}";
+          _weatherData[city] = {
+            'temp': "${data['main']['temp']}°C",
+            'description': data['weather'][0]['description'],
+            'icon': data['weather'][0]['icon'],
+          };
         });
       } catch (e) {
         if (!mounted) return;
         setState(() {
-          _weatherData[city] = "Error: $e";
+          _weatherData[city] = {
+            'temp': 'Error',
+            'description': 'Failed to load',
+            'icon': null,
+          };
         });
       }
     }
@@ -62,11 +69,25 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: _cities.length,
         itemBuilder: (context, index) {
           final city = _cities[index];
-          final weather = _weatherData[city] ?? 'Loading...';
+          final weather = _weatherData[city];
+          final iconUrl = (weather != null && weather['icon'] != null)
+              ? "https://openweathermap.org/img/w/${weather['icon']}.png"
+              : null;
 
           return ListTile(
+            leading: iconUrl != null
+                ? Image.network(
+                    iconUrl,
+                    width: 40,
+                    height: 40,
+                  )
+                : const Icon(Icons.error),
             title: Text(city),
-            subtitle: Text(weather),
+            subtitle: Text(
+              weather != null
+                  ? "${weather['temp']}, ${weather['description']}"
+                  : 'Loading...',
+            ),
             onTap: () async {
               try {
                 final forecast =
