@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'screens/home_screen.dart';
+import 'package:weather_app/screens/home_screen.dart';
 
-void main() async {
-  await dotenv.load(
-      fileName: ".env"); // Ładowanie zmiennych środowiskowych z pliku .env
+Future<void> main() async {
+  await dotenv.load(fileName: ".env"); // Wczytywanie zmiennych środowiskowych
   runApp(const MyApp());
 }
 
