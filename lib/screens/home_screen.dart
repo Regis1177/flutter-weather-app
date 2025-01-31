@@ -13,13 +13,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final WeatherService _weatherService = WeatherService();
+
+  // Lista wszystkich stolic województw w Polsce
   final List<String> _cities = [
-    'Warsaw',
-    'Krakow',
-    'Lodz',
-    'Wroclaw',
-    'Poznan'
+    'Warsaw', // Mazowieckie
+    'Krakow', // Małopolskie
+    'Lodz', // Łódzkie
+    'Wroclaw', // Dolnośląskie
+    'Poznan', // Wielkopolskie
+    'Gdansk', // Pomorskie
+    'Szczecin', // Zachodniopomorskie
+    'Bydgoszcz', // Kujawsko-pomorskie
+    'Lublin', // Lubelskie
+    'Bialystok', // Podlaskie
+    'Katowice', // Śląskie
+    'Rzeszow', // Podkarpackie
+    'Olsztyn', // Warmińsko-mazurskie
+    'Opole', // Opolskie
+    'Kielce', // Świętokrzyskie
+    'Zielona Gora' // Lubuskie
   ];
+
   final Map<String, Map<String, dynamic>?> _weatherData = {};
 
   @override
