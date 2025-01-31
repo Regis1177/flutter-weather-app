@@ -1,0 +1,33 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+.idea/
+.vscode/
+*.iml
+
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/app/proguard-rules.pro
+*.jks
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.generated/
+Pods/
+*.xcworkspace
+DerivedData/
+.xcsettings
+
+# MacOS
+.DS_Store
+
+# VSCode/JetBrains
+*.log
+.*.swp
+*.lock
