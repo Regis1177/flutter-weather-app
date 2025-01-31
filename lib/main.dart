@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:weather_app/screens/home_screen.dart';
+import 'screens/home_screen.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env"); // Wczytywanie zmiennych środowiskowych
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const HomeScreen(),
     );
   }
